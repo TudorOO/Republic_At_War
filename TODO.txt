@@ -1,0 +1,53 @@
+//Highscore system
+---Intro
+	-Images
+	-Implement Dialogue Box
+	-Write intro dialogue
+
+---Rhythm Game
+	?Try particle system
+	!-Backgrounds
+	!-Sound Effects
+	!-Difficulty scaling
+	!-Less often 0 rows
+	!!-Cutscenes for exiting level(enemy runs away or, in the 	case of Level3, thanks you)
+	-Write entrance cutscenes
+
+---Duel Game
+	!!-Backgrounds
+	!!-Sound Effects
+	!!-Difficulty scaling
+	!-2 more attacks for enemy
+	!!-Cutscenes for exiting level( ~ )
+	-Cutscenes for entering level
+	!!T-Make twist for last level( enemy revives faster and a 	little green)
+
+---Running Game
+	-Intro Tutorial Card
+	-Lose and Win Cards
+	-Make actual levels, with speed that increases at a certain 	threshold
+	-Backgrounds
+	-Cutscenes for exiting level( ~ )
+	-Cutscenes for entering level
+	T-Make twist for last level
+	?-Animate enemy better
+	?-Make enemy dodge attacks( Only if time left Hella )
+
+
+!!! FIND 2 MORE GAMES!!!
+
+
+---Last Game
+
+
+Extra stuff:
+	-Make big head icons for everyone
+
+
+Known bugs:
+
+1 - On world Map, if you play level 4 you can skip level 6
+
+GITHUB
+git add -A
+git commit -am "name"
