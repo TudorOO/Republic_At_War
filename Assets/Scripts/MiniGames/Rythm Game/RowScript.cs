@@ -26,7 +26,7 @@ public class RowScript : MonoBehaviour
             Debug.Log("Empty Row");
             Destroy(this.gameObject);
         }else if(rand <= oneArChance && rand > zeroArChance){
-            int ar = Random.Range(0, 3);
+            int ar = Random.Range(0, 4);
             int i = 0;
             Debug.Log("1 Row");
             foreach(Transform child in transform){
@@ -36,8 +36,8 @@ public class RowScript : MonoBehaviour
                 i++;
             }
         }else if (rand >= 100-twoArChance){
-            int ar1 = Random.Range(0, 3);
-            int ar2 = Random.Range(0, 3);
+            int ar1 = Random.Range(0, 4);
+            int ar2 = Random.Range(0, 4);
             int i = 0;
             Debug.Log("2 Row");
             foreach (Transform child in transform){
@@ -47,7 +47,7 @@ public class RowScript : MonoBehaviour
                 i++;
             }
         }else if(rand - oneArChance - twoArChance - zeroArChance>= 0){
-            int ar1 = Random.Range(0, 3);
+            int ar1 = Random.Range(0, 4);
             int i = 0;
             Debug.Log("3 Row");
             foreach(Transform child in transform){
@@ -57,7 +57,7 @@ public class RowScript : MonoBehaviour
                 i++;
             }
         }else{
-            int ar = Random.Range(0, 3);
+            int ar = Random.Range(0, 4);
             int i = 0;
             foreach(Transform child in transform){
                 if(i != ar && i != ar+4){

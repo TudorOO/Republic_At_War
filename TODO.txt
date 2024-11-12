@@ -14,10 +14,9 @@
 	!!-Backgrounds
 	!!-Sound Effects
 	!!-Difficulty scaling
-	!-2 more attacks for enemy
 	!!-Cutscenes for exiting level( ~ )
 	-Cutscenes for entering level
-	!!T-Make twist for last level( enemy revives faster and a 	little green)
+	!!T-Make twist for last level( enemy revives and bits of the floor fall through)
 
 ---Running Game
 	-Intro Tutorial Card

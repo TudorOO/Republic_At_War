@@ -3862,7 +3862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoteHolder: {fileID: 1706709454}
-  enemyMultiplier: 2
+  enemyMultiplier: 4
   IntroScreen: {fileID: 1834918691}
   EndingScreen_W: {fileID: 1208571958}
   EndingScreen_L: {fileID: 1788975722}
@@ -3872,11 +3872,14 @@ MonoBehaviour:
   hitNoteSfx: {fileID: 1464135422}
   DealDamageSfx: {fileID: 1464135421}
   NoteMissedSfx: {fileID: 1769714910}
-  virusMusic: {fileID: 0}
+  virusMusic: {fileID: 1464135422}
   music: {fileID: 1464135418}
   startPlaying: 0
   timer: {fileID: 621673569}
-  MultiplierThresholds: 10000000200000003000000040000000
+  attackPerNote: 20
+  attackPerGoodNote: 5
+  attackPerPerfectNote: 8
+  MultiplierThresholds: 10000000200000004000000064000000
   bs: {fileID: 1706709456}
   playerAnim: {fileID: 541119684}
   enemyAnim: {fileID: 130683953}
@@ -3894,7 +3897,8 @@ MonoBehaviour:
   multiText: {fileID: 1757592723}
   VirusMultifier: 2
   SpawnTime: 0.35
-  playerDefaultDamage: 4
+  playerDefaultDamage: 8
+  virusEffect: {fileID: 1464135422}
 --- !u!4 &1464135420
 Transform:
   m_ObjectHideFlags: 0

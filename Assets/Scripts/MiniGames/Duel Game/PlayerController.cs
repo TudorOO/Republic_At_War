@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float dashCoolDown = 1f;
 
+    private bool countDownStarted = false;
+
     [Range(0f, 1f)]
     public float drag = 0.9f;
 
@@ -143,6 +145,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator Count(){
+        countDownStarted = true;
         countText.text = "";
         introScreen.SetActive(false);
         countText.text = "3";
@@ -162,7 +165,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) && !hasEnded && !isRunning){
+        if(Input.GetKeyDown(KeyCode.Return) && !hasEnded && !isRunning && !countDownStarted){
             StartCoroutine(Count());
         }
 
@@ -224,6 +227,8 @@ public class PlayerController : MonoBehaviour
             enemyObj.SetActive(false);
         }
     }
+
+
 
     public void EnemyDied(){
         if(!hasWon){
@@ -311,6 +316,7 @@ public class PlayerController : MonoBehaviour
     void HandleJump(){
         if(Input.GetButtonDown("Jump") && grounded){
             rb.velocity = new Vector3(rb.velocity.x, jumpSpeed);
+            grounded = false;
         }
     }
 
@@ -374,15 +380,17 @@ public class PlayerController : MonoBehaviour
     }
 
     public void GetHit(int damage, int shieldDamage, bool isRight){
-        if(isShielded){
-            attack -= shieldDamage;
-            //Animation
-        }else{
-            if(!isGettingHit){
-                CheckInput();
-                hp -= damage;
-                anim.SetTrigger("getHit");
-                StartCoroutine(HitRoutine(isRight));
+        if(!hasEnded){
+            if(isShielded){
+                attack -= shieldDamage;
+                //Animation
+            }else{
+                if(!isGettingHit){
+                    CheckInput();
+                    hp -= damage;
+                    anim.SetTrigger("getHit");
+                    StartCoroutine(HitRoutine(isRight));
+                }
             }
         }
     }
@@ -397,5 +405,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         isGettingHit = false;
         rb.velocity = new Vector2(0, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("Aranpe");
+        if(other.tag == "activator"){
+            GetHit(10, 20, true);
+        }
     }
 }

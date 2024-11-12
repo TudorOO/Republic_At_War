@@ -3878,7 +3878,10 @@ MonoBehaviour:
   music: {fileID: 1464135418}
   startPlaying: 0
   timer: {fileID: 621673569}
-  MultiplierThresholds: 10000000200000003000000040000000
+  attackPerNote: 30
+  attackPerGoodNote: 10
+  attackPerPerfectNote: 20
+  MultiplierThresholds: 10000000200000004000000064000000
   bs: {fileID: 1706709456}
   playerAnim: {fileID: 541119684}
   enemyAnim: {fileID: 130683953}
@@ -3894,9 +3897,9 @@ MonoBehaviour:
   attackBar_P: {fileID: 250371759}
   attackBar_E: {fileID: 1116510467}
   multiText: {fileID: 1757592723}
-  VirusMultifier: 2
+  VirusMultifier: 1.5
   SpawnTime: 0.35
-  playerDefaultDamage: 6
+  playerDefaultDamage: 8
   virusEffect: {fileID: 1828273310}
 --- !u!4 &1464135420
 Transform:

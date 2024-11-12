@@ -23,6 +23,18 @@ public class DuelEnemyController : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsEnemies;
 
+    public bool attack1 = false;
+    public bool attack2 = false;
+
+    [SerializeField]
+    private GameObject atck1Feed;
+    [SerializeField]
+    private GameObject atck1;
+    [SerializeField]
+    private GameObject atck2Feed;
+    [SerializeField]
+    private GameObject atck2;
+
     [SerializeField]
     private float jumpSpeed;
     [SerializeField]
@@ -55,6 +67,7 @@ public class DuelEnemyController : MonoBehaviour
             }else{
                 rb.velocity = new Vector3(-7f, jumpSpeed);
             }
+            grounded = false;
         }
     }
 
@@ -70,6 +83,63 @@ public class DuelEnemyController : MonoBehaviour
                 StartCoroutine(HitRoutine(false));
             }
         }
+    }
+
+
+    public IEnumerator Attack1(){
+        int right;
+        anim.SetBool("isRunning", false);
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0;
+        rb.velocity = new Vector2(0f, 0f);
+        anim.SetBool("Attack1", true);
+        anim.SetTrigger("Attack1Trig");
+        atck1Feed.SetActive(true);
+        if(player.position.x - transform.position.x < 0){
+            right = 1;
+        }else{
+            right = 2;
+        }
+        yield return new WaitForSeconds(0.4f);
+        atck1Feed.SetActive(false);
+        atck1.SetActive(true);
+        if(right == 1){
+            transform.position = new Vector2(-8f, transform.position.y);
+        }else{
+            transform.position = new Vector2(8f, transform.position.y);
+        }
+        yield return new WaitForSeconds(0.03f);
+        //SOUND EFFECT
+        atck1.SetActive(false);
+        yield return new WaitForSeconds(0f);
+        rb.gravityScale = originalGravity;
+        anim.SetBool("Attack1", false);
+        anim.SetBool("isRunning", true);
+        anim.SetBool("isJumping", false);
+    }
+
+    public IEnumerator Attack2(){
+        int right;
+        anim.SetBool("isRunning", false);
+        float originalGravity = rb.gravityScale;
+        rb.velocity = new Vector2(0f, 0f);
+        rb.gravityScale = 0;
+        rb.velocity = new Vector2(0f, 0f);
+        SwitchPlayer();
+        anim.SetBool("Attack1", true);
+        anim.SetTrigger("Attack1Trig");
+        atck2Feed.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+        atck2Feed.SetActive(false);
+        atck2.SetActive(true);
+        yield return new WaitForSeconds(0.03f);
+        //SOUND EFFECT
+        atck2.SetActive(false);
+        yield return new WaitForSeconds(0f);
+        rb.gravityScale = originalGravity;
+        anim.SetBool("Attack1", false);
+        anim.SetBool("isRunning", true);
+        anim.SetBool("isJumping", false);
     }
     private IEnumerator HitRoutine(bool isRight){
         isGettingHit = true;
@@ -93,12 +163,23 @@ public class DuelEnemyController : MonoBehaviour
     }
 
     private void Update(){
+        if(Input.GetKeyDown(KeyCode.X)){
+            StartCoroutine(Attack1());
+        }
         if(!hasEnded){
             if(!switchLock){
                 SwitchPlayer();
             }
             enemyHp.SetHealth((int)Hp);
-            Attack();
+            if(attack1){
+                StartCoroutine(Attack1());
+                attack1 = false;
+            }else if(attack2){
+                StartCoroutine(Attack2());
+                attack2 = false;
+            }else{
+                Attack();
+            }
             if(Hp <= 0){
                 player.GetComponent<PlayerController>().EnemyDied();
                 hasEnded = true;

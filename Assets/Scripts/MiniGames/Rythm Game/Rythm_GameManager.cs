@@ -53,8 +53,11 @@ public class Rythm_GameManager : MonoBehaviour
     [SerializeField]
     private TMP_Text timer;
 
+    [SerializeField]
     private int attackPerNote = 30;
+    [SerializeField]
     private int attackPerGoodNote = 10;
+    [SerializeField]
     private int attackPerPerfectNote = 20;
 
     private bool isMusicPaused = false;
@@ -85,6 +88,8 @@ public class Rythm_GameManager : MonoBehaviour
 
     [SerializeField]
     private float virusThreshHold;
+
+    private bool countDownStarted = false;
 
     [SerializeField]
     private HealthBar attackBar_P;
@@ -117,7 +122,7 @@ public class Rythm_GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         virusMusic.Play();
         enemyHealth = 150;
-        playerDefaultDamage = 8;
+        playerDefaultDamage = 6;
         healthBar_E.SetHealth(enemyHealth);
         bs.virusMultifier  = VirusMultifier;
         bs.spawnTime = SpawnTime;
@@ -185,7 +190,7 @@ public class Rythm_GameManager : MonoBehaviour
 
 
         if(!startPlaying){
-            if(Input.GetKeyDown(KeyCode.Return)){
+            if(Input.GetKeyDown(KeyCode.Return) && countDownStarted == false){
                 Destroy(IntroScreen.gameObject);
                 StartCoroutine(Countdown());
             }
@@ -221,6 +226,7 @@ public class Rythm_GameManager : MonoBehaviour
     }
 
     private IEnumerator Countdown(){
+        countDownStarted = true;
         timer.text = "3";
         countAd.Play();
         yield return new WaitForSeconds(1f);
@@ -321,8 +327,8 @@ public void PerfectHit(bool p){
         attackBar_E.SetMaxHealth(500);
         attackBar_E.SetHealth(0);
         attackBar_P.SetHealth(0);
-        enemyHealth = 100;
-        playerHealth = 100;
+        enemyHealth = 150;
+        playerHealth = 150;
         enemyAttack = 0;
         playerAttack = 0;
     }
