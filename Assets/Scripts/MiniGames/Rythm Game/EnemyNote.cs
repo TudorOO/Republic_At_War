@@ -11,6 +11,8 @@ public class EnemyNote : MonoBehaviour
     
     private GameObject button;
 
+    private SpriteRenderer sp;
+
     private int rand;
 
     [SerializeField]
@@ -36,6 +38,8 @@ public class EnemyNote : MonoBehaviour
                 button = GameObject.Find("Button_E_D");
                 break;
         }
+        sp =GetComponent<SpriteRenderer>();
+        sp.enabled = false;
     }
 
     // Update is called once per frame
@@ -66,6 +70,9 @@ public class EnemyNote : MonoBehaviour
         if(other.tag == "activator"){
             rand = Random.Range(1, 10);
             canBePressed = true;    
+        }
+        if(other.tag == "Enemy"){
+            sp.enabled = true;
         }
     }
 

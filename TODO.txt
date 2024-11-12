@@ -6,10 +6,7 @@
 
 ---Rhythm Game
 	?Try particle system
-	!-Backgrounds
-	!-Sound Effects
 	!-Difficulty scaling
-	!-Less often 0 rows
 	!!-Cutscenes for exiting level(enemy runs away or, in the 	case of Level3, thanks you)
 	-Write entrance cutscenes
 
@@ -31,7 +28,7 @@
 	-Cutscenes for entering level
 	T-Make twist for last level
 	?-Animate enemy better
-	?-Make enemy dodge attacks( Only if time left Hella )
+	?-Make enemy dodge attacks( Only if time left)
 
 
 !!! FIND 2 MORE GAMES!!!
@@ -51,3 +48,4 @@ Known bugs:
 GITHUB
 git add -A
 git commit -am "name"
+git push -u origin main

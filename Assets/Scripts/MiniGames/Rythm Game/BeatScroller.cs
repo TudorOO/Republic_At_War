@@ -10,6 +10,10 @@ public class BeatScroller : MonoBehaviour
 
     public bool isSpawning;
 
+    public int zeroArChance = 25;
+    public int oneArChance = 60;
+    public int twoArChance = 15;
+
     public int beatTempo = 120;
     [SerializeField]
     private GameObject RowPrefab;
@@ -27,7 +31,7 @@ public class BeatScroller : MonoBehaviour
     private void spawnRow(){
         GameObject a = Instantiate(RowPrefab) as GameObject;
         a.transform.parent = gameObject.transform;
-        a.transform.localPosition = new Vector3(0, travelSpeed, 0);
+        a.transform.localPosition = new Vector3(0, travelSpeed+2f, 0);
     }
 
     private IEnumerator RowSpawner(){

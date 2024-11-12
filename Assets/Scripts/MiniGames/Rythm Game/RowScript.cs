@@ -9,13 +9,16 @@ public class RowScript : MonoBehaviour
     private float beatTempo;
 
 
-    public int zeroArChance = 25;
-    public int oneArChance = 60;
-    public int twoArChance = 15;
+    private int zeroArChance = 25;
+    private int oneArChance = 60;
+    private int twoArChance = 15;
 
     // Start is called before the first frame update
     void Start()
     {
+        zeroArChance = GetComponentInParent<BeatScroller>().zeroArChance;
+        oneArChance = GetComponentInParent<BeatScroller>().oneArChance;
+        twoArChance = GetComponentInParent<BeatScroller>().twoArChance;
         beatTempo = GetComponentInParent<BeatScroller>().beatTempo;
         beatTempo = beatTempo / 60f;
         int rand = Random.Range(0, 100);
@@ -31,9 +34,6 @@ public class RowScript : MonoBehaviour
                     Destroy(child.gameObject);
                 }
                 i++;
-            }
-            if(rand >24 && rand < 43){
-                transform.localPosition -= new Vector3(0, 0.5f, 0);
             }
         }else if (rand >= 100-twoArChance){
             int ar1 = Random.Range(0, 3);
@@ -64,10 +64,6 @@ public class RowScript : MonoBehaviour
                     Destroy(child.gameObject);
                 }
                 i++;
-            }
-            if(rand >25 && rand < 34){
-                Debug.Log("Double!");
-                transform.localPosition -= new Vector3(0, 0.1f, 0);
             }
         }
     }

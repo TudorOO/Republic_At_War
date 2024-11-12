@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class Rythm_GameManager : MonoBehaviour
 {
 
     [SerializeField]
     private GameObject NoteHolder;
+    [SerializeField]
+    private int enemyMultiplier;
 
     [SerializeField]
     private GameObject IntroScreen;
@@ -17,6 +20,12 @@ public class Rythm_GameManager : MonoBehaviour
     [SerializeField]
     private GameObject EndingScreen_L;
 
+    [SerializeField]
+    private AudioSource WonAd;
+    [SerializeField]
+    private AudioSource GameOverAd;
+    [SerializeField]
+    private AudioSource countAd;
     [SerializeField]
     private AudioSource hitNoteSfx;
     [SerializeField]
@@ -89,6 +98,10 @@ public class Rythm_GameManager : MonoBehaviour
     private float VirusMultifier = 1;
     [SerializeField]
     private float SpawnTime = 0.35f;
+    [SerializeField]
+    private int playerDefaultDamage;
+    [SerializeField]
+    private AudioSource virusEffect;
 
     private IEnumerator virusize(){
         enemyHealth = 100;
@@ -98,15 +111,23 @@ public class Rythm_GameManager : MonoBehaviour
         }
         NoteHolder.SetActive(false);
         music.Stop();
-        //virusEffect.Play();
         enemyAnim.SetTrigger("viruseze");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(6f);
+        virusEffect.Play();
+        yield return new WaitForSeconds(1f);
         virusMusic.Play();
-        enemyHealth = 100;
+        enemyHealth = 150;
+        playerDefaultDamage = 8;
         healthBar_E.SetHealth(enemyHealth);
         bs.virusMultifier  = VirusMultifier;
         bs.spawnTime = SpawnTime;
         NoteHolder.SetActive(true);
+        NoteHolder.GetComponent<BeatScroller>().zeroArChance = 10;
+        NoteHolder.GetComponent<BeatScroller>().oneArChance = 80;
+        NoteHolder.GetComponent<BeatScroller>().twoArChance = 10;
+        NoteHolder.GetComponent<BeatScroller>().beatTempo = 195;
+        NoteHolder.GetComponent<BeatScroller>().spawnTime = 0.3f;
+
         bs.isSpawning = false;
     }
 
@@ -173,13 +194,13 @@ public class Rythm_GameManager : MonoBehaviour
 
         if(playerAttack >= 500){
             DealDamageSfx.Play();
-            PlayerDealsDamage(5 * currentMultiplier);
+            PlayerDealsDamage(playerDefaultDamage * currentMultiplier);
             playerAttack = 0;
             attackBar_P.SetHealth(playerAttack);
         }
         if(enemyAttack >= 500){
             DealDamageSfx.Play();
-            EnemyDealsDamage(5 * Random.Range(1, 3));
+            EnemyDealsDamage(enemyMultiplier * Random.Range(2, 5));
             enemyAttack = 0;
             attackBar_E.SetHealth(enemyAttack);
         }
@@ -201,10 +222,13 @@ public class Rythm_GameManager : MonoBehaviour
 
     private IEnumerator Countdown(){
         timer.text = "3";
+        countAd.Play();
         yield return new WaitForSeconds(1f);
         timer.text = "2";
+        countAd.Play();
         yield return new WaitForSeconds(1);
         timer.text = "1";
+        countAd.Play();
         yield return new WaitForSeconds(1);
         timer.text = "START!";
         NoteHolder.gameObject.SetActive(true);
@@ -217,9 +241,11 @@ public class Rythm_GameManager : MonoBehaviour
 
     private IEnumerator PlayerDeath(){
         NoteHolder.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2f);
         music.Stop();
+        virusMusic.Stop();
+        yield return new WaitForSeconds(2f);
         EndingScreen_L.gameObject.SetActive(true);
+        GameOverAd.Play();
         beatLevel = false;
         canReturn = true;
     }
@@ -228,6 +254,8 @@ public class Rythm_GameManager : MonoBehaviour
         NoteHolder.gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
         music.Stop();
+        virusMusic.Stop();
+        WonAd.Play();
         EndingScreen_W.gameObject.SetActive(true);
         beatLevel = true;
         canReturn = true;
@@ -254,6 +282,7 @@ public class Rythm_GameManager : MonoBehaviour
     }
 
     public void NoteMissed(){
+        NoteMissedSfx.Play();
         currentMultiplier = 1;
         multiplierTracker = 0;
         multiText.text = "x" + currentMultiplier;
@@ -285,9 +314,9 @@ public void PerfectHit(bool p){
 }
 
 
-private void SetupHealthAndAttackBars(){
-    healthBar_P.SetMaxHealth(100);
-        healthBar_E.SetMaxHealth(100);
+    private void SetupHealthAndAttackBars(){
+        healthBar_P.SetMaxHealth(150);
+        healthBar_E.SetMaxHealth(150);
         attackBar_P.SetMaxHealth(500);
         attackBar_E.SetMaxHealth(500);
         attackBar_E.SetHealth(0);
@@ -296,7 +325,7 @@ private void SetupHealthAndAttackBars(){
         playerHealth = 100;
         enemyAttack = 0;
         playerAttack = 0;
-}
+    }
 
 
     private void PlayerDealsDamage(int damage){

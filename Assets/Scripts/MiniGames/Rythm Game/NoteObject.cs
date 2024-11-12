@@ -8,6 +8,7 @@ public class NoteObject : MonoBehaviour
     private bool canBePressed;
 
     private bool obtained = false;
+    private SpriteRenderer sp;
 
     [SerializeField]
     private GameObject hitPrefab, missPrefab, goodPrefab, perfectPrefab;
@@ -18,7 +19,8 @@ public class NoteObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sp = GetComponent<SpriteRenderer>();
+        sp.enabled = false;
     }
 
     // Update is called once per frame
@@ -50,7 +52,11 @@ public class NoteObject : MonoBehaviour
         if(other.tag == "activator"){
             canBePressed = true;    
         }
+        if(other.tag == "Enemy"){
+            sp.enabled = true;
+        }
     }
+
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "activator"){
