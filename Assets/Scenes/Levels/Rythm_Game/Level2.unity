@@ -4361,8 +4361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawning: 0
   zeroArChance: 5
-  oneArChance: 40
-  twoArChance: 50
+  oneArChance: 70
+  twoArChance: 20
   beatTempo: 180
   RowPrefab: {fileID: 2884965873659556764, guid: 06e80d30e22e0df47be28d6289b3421c, type: 3}
   spawnTime: 0.38

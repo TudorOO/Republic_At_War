@@ -9,6 +9,10 @@ public class PlayerRunning : MonoBehaviour
     public int state = 1;
 
     public int runDistance = 0;
+    
+    public bool spawning = true;
+    [SerializeField]
+    private GameObject spawner;
 
     public int runGoal = 40000;
 
@@ -52,6 +56,7 @@ public class PlayerRunning : MonoBehaviour
         anim.SetBool("isRunning", true);
         runBar.SetMaxHealth(runGoal);
         runBar.SetHealth(0);
+        spawner.GetComponent<RunSpawner>().start();
     }
 
     // Update is called once per frame
@@ -62,10 +67,17 @@ public class PlayerRunning : MonoBehaviour
         if(lives <= 0){
             Lose();
         }
+        if(runDistance >= runGoal){
+            Win();
+        }
 
         HandleAttack();
         HandleInput();
         changeState();
+    }
+
+    private void Win(){
+        spawning = false;
     }
 
     private void HandleInput(){

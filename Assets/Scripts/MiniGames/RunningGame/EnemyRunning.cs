@@ -61,70 +61,7 @@ public class EnemyRunning : MonoBehaviour
         if(check == false){
             changeState();
         }
-        if(attacking == false){
-        //    handleAttack();
-        }
     }
 
-    private void handleAttack(){
-        rnd = Random.Range(0, 1000);
-        if(rnd < 100 ){
-
-        }else if( rnd < 500){
-            //place 1 at state
-            if(rnd % 3 == 0){
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, 3.92f), Quaternion.identity);
-            }
-            if(rnd % 3 == 1){
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, 0.9f), Quaternion.identity);
-            }
-            if(rnd % 3 == 2){
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, -2.1f), Quaternion.identity);
-            }
-            if(rnd % 5 == 0){
-                StartCoroutine(attack2(0.3f));
-            }
-            StartCoroutine(attackRoutine());
-        }else if(rnd < 800){
-            //place 2 in state up or down
-            if(rnd % 3 == 0){
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, 3.92f), Quaternion.identity);
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, 0.9f), Quaternion.identity);
-            }
-            if(rnd % 3 == 1){
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, 0.9f), Quaternion.identity);
-                if(rnd % 2 == 0){
-                    Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, 3.92f), Quaternion.identity);
-                }else{
-                    Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, -2.1f), Quaternion.identity);
-                }
-            }
-            if(rnd % 3 == 2){
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, -2.1f), Quaternion.identity);
-                Instantiate(Attack1, new Vector2(transform.position.x - 0.01f, 0.9f), Quaternion.identity);
-            }
-            if(rnd % 5 == 0){
-                StartCoroutine(attack2(0.3f));
-            }
-            StartCoroutine(attackRoutine());
-        }else{
-            //place bigHit
-            Instantiate(Attack2, new Vector2(transform.position.x - 0.01f, 0.61f), Quaternion.identity);
-            if(rnd % 5 == 0){
-                StartCoroutine(attack2(0.6f));
-            }
-            StartCoroutine(attackRoutine());
-        }
-    }
-
-    private IEnumerator attack2(float timeToWait){
-        yield return new WaitForSeconds(timeToWait);
-        Instantiate(Attack2, new Vector2(transform.position.x - 0.01f, 0.61f), Quaternion.identity);
-    }
-
-    private IEnumerator attackRoutine(){
-        attacking = true;
-        yield return new WaitForSeconds(1f);
-        attacking = false;
-    }
+    
 }
