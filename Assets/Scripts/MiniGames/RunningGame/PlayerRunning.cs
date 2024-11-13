@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using TMPro;
+using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerRunning : MonoBehaviour
@@ -37,14 +41,33 @@ public class PlayerRunning : MonoBehaviour
     private float startTimeBtwAttack;
 
     [SerializeField]
+    private GameObject introScreen;
+
+    [SerializeField]
+    private GameObject WinCard;
+    [SerializeField]
+    private GameObject LoseCard;
+
+    [SerializeField]
     private Transform attackPos;
     [SerializeField]
     private LayerMask whatIsEnemies;
     [SerializeField]
     private float attackRange;
+
+    [SerializeField]
+    private TMP_Text countText;
+
     public bool hitSomeone = false;
 
+    private bool ended = false;
+    private bool won = false;
+
     public bool attacking = false;
+
+    public bool isRunning = false;
+
+    private bool countDownStarted = false;
 
     [SerializeField]
     private int lives = 3;
@@ -56,28 +79,71 @@ public class PlayerRunning : MonoBehaviour
         anim.SetBool("isRunning", true);
         runBar.SetMaxHealth(runGoal);
         runBar.SetHealth(0);
+        introScreen.SetActive(true);
+        isRunning = false;
+    }
+
+
+    private IEnumerator Count(){
+        countDownStarted = true;
+        countText.text = "";
+        introScreen.SetActive(false);
+        countText.text = "3";
+        yield return new WaitForSeconds(1f);
+        countText.text = "2";
+        yield return new WaitForSeconds(1f);
+        countText.text = "1";
+        yield return new WaitForSeconds(1f);
+        countText.text = "GO!";
+        isRunning = true;
         spawner.GetComponent<RunSpawner>().start();
+        yield return new WaitForSeconds(1f);
+        countText.text = "";
     }
 
     // Update is called once per frame
     void Update()
     {
-        runBar.SetHealth(runDistance);
-        runDistance++;
-        if(lives <= 0){
-            Lose();
+        if(isRunning == false && countDownStarted == false){
+            if(Input.GetKeyDown(KeyCode.Return)){
+                StartCoroutine(Count());
+            }
         }
-        if(runDistance >= runGoal){
-            Win();
-        }
+        if(isRunning){
+            runBar.SetHealth(runDistance);
+            runDistance++;
+            if(lives <= 0){
+                StartCoroutine(Lose());
+            }
+            if(runDistance >= runGoal){
+                StartCoroutine(Win());
+            }
 
-        HandleAttack();
-        HandleInput();
-        changeState();
+            HandleAttack();
+            HandleInput();
+            changeState();
+        }
+        if(ended){
+            if(Input.GetKeyDown(KeyCode.Return)){
+                if(won){
+                    GameManager.beatLevel = true;
+                    SceneManager.LoadScene("MainWorld");
+                }else{
+                    GameManager.beatLevel = false;
+                    SceneManager.LoadScene("MainWorld");
+                }
+            }
+        }
     }
 
-    private void Win(){
-        spawning = false;
+    private IEnumerator Win(){
+        spawner.SetActive(false);
+        isRunning = false;
+        //ANIMATIONS
+        yield return new WaitForSeconds(4f);
+        ended = true;
+        won = true;
+        WinCard.SetActive(true);
     }
 
     private void HandleInput(){
@@ -103,7 +169,14 @@ public class PlayerRunning : MonoBehaviour
         }
     }
 
-    private void Lose(){}
+    private IEnumerator Lose(){
+        spawner.SetActive(false);
+        isRunning = false;
+        //ANIMATIONS
+        yield return new WaitForSeconds(4f);
+        ended = true;
+        LoseCard.SetActive(true);
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Enemy"){

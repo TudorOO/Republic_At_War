@@ -11,26 +11,27 @@
 	-Write entrance cutscenes
 
 ---Duel Game
-	!!-Backgrounds
-	!!-Sound Effects
+	!-Sound Effects
 	!!-Difficulty scaling
 	!!-Cutscenes for exiting level( ~ )
 	-Cutscenes for entering level
-	!!T-Make twist for last level( enemy revives and bits of the floor fall through)
+	!T-Make twist for last level( enemy revives and bits of the floor fall through)
 
 ---Running Game
-	-Intro Tutorial Card
-	-Lose and Win Cards
-	-Make actual levels, with speed that increases at a certain 	threshold
-	-Backgrounds
+	!-Animations for win and lose
+	-Difficulty scaling (thresholds)
+	!-Sound Effects
 	-Cutscenes for exiting level( ~ )
 	-Cutscenes for entering level
+	?-Make Coins?
 	T-Make twist for last level
 	?-Animate enemy better
 	?-Make enemy dodge attacks( Only if time left)
 
+---Tank Game 
+	!-Begin https://www.youtube.com/watch?v=3KZYIqCXz6s&list=PLcRSafycjWFfIzbU5gqa6PSIsIVe-Acw5
 
-!!! FIND 2 MORE GAMES!!!
+!!! FIND 1 MORE GAME!!!
 
 
 ---Last Game

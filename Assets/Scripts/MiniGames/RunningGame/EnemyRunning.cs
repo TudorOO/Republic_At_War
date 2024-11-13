@@ -16,10 +16,14 @@ public class EnemyRunning : MonoBehaviour
     private GameObject Attack2;
     private bool attacking = false;
 
+    [SerializeField]
+    private PlayerRunning playerRunning;
+
     // Start is called before the first frame update
     void Start()
     {
         state = 1;
+
     }
 
     private IEnumerator uncheckAfterTime(float time){
@@ -58,7 +62,7 @@ public class EnemyRunning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(check == false){
+        if(check == false && playerRunning.isRunning == true){
             changeState();
         }
     }

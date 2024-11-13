@@ -294,7 +294,7 @@ public class PlayerController : MonoBehaviour
 
             float direction = Mathf.Sign(xInput);
             if(switchLock == false){
-                transform.localScale = new Vector3(direction*5, 5, 1);
+                transform.localScale = new Vector3(direction*7, 7, 1);
             }
         }
     }

@@ -156,9 +156,9 @@ public class DuelEnemyController : MonoBehaviour
 
     private void SwitchPlayer(){
         if(player.position.x - transform.position.x <0){
-            transform.localScale = new Vector3(5, 5, 1);
+            transform.localScale = new Vector3(10, 10, 1);
         }else{
-            transform.localScale = new Vector3(-5, 5, 1);
+            transform.localScale = new Vector3(-10, 10, 1);
         }
     }
 
