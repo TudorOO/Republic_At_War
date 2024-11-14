@@ -1,29 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class TankMovement : MonoBehaviour
+public class TurretMovement : MonoBehaviour
 {
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb2d;
+    private Vector2 movementVector;
+    public float maxSpeed = 10;
+    public float rotationSpeed = 100;
+    public float turretRotationSpeed = 150;
 
-    [SerializeField]
-    private float speed = 1f;
+    public Transform turretParent;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>;
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void HandleShoot()
     {
-        HandleMovement();
+        Debug.Log("Shooting");
     }
 
-    private void HandleMovement(){
-        
-            if(Input.GetKey(KeyCode.E)){
-            }
+    public void HandleMoveBody(Vector2 movementVector)
+    {
+        this.movementVector = movementVector;
+    }
+
+    public void HandleTurretMovement(Vector2 pointerPosition)
+    {
+        var turretDirection = (Vector3)pointerPosition - turretParent.position;
+
+        var desiredAngle = Mathf.Atan2(turretDirection.y, turretDirection.x) * Mathf.Rad2Deg;
+
+        var rotationStep = turretRotationSpeed * Time.deltaTime;
+
+        turretParent.rotation = Quaternion.RotateTowards(turretParent.rotation, Quaternion.Euler(0, 0, desiredAngle-90), rotationStep);
+    }
+
+    private void FixedUpdate()
+    {
+        rb2d.velocity = (Vector2)transform.up * movementVector.y * maxSpeed * Time.fixedDeltaTime;
+        rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
     }
 }
