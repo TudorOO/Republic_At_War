@@ -29,7 +29,11 @@
 	?-Make enemy dodge attacks( Only if time left)
 
 ---Tank Game 
-	!-Begin https://www.youtube.com/watch?v=3KZYIqCXz6s&list=PLcRSafycjWFfIzbU5gqa6PSIsIVe-Acw5
+	!- Make arena
+	!- Make Enemy AI
+	- Sound Effects
+	- Cutscenes
+	- Animations
 
 !!! FIND 1 MORE GAME!!!
 
