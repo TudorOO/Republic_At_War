@@ -27,32 +27,32 @@ public class RunSpawner : MonoBehaviour
                     goat.transform.parent = gameObject.transform;
                     break;
                 case 1:
-                    var goat1 = Instantiate(single, new Vector2(transform.position.x, 3.9f), Quaternion.identity);//Up line
+                    var goat1 = Instantiate(single, new Vector2(transform.position.x, 2.4f), Quaternion.identity);//Up line
                     goat1.transform.parent = gameObject.transform;
                     break;
                 case 2:
-                    var goat2 = Instantiate(single, new Vector2(transform.position.x, 1f), Quaternion.identity);//Middle line
+                    var goat2 = Instantiate(single, new Vector2(transform.position.x, -0.5f), Quaternion.identity);//Middle line
                     goat2.transform.parent = gameObject.transform;
                     break;
                 case 3:
-                    var goat3 = Instantiate(single, new Vector2(transform.position.x, -2f), Quaternion.identity);//Down line
+                    var goat3 = Instantiate(single, new Vector2(transform.position.x, -3.5f), Quaternion.identity);//Down line
                     goat3.transform.parent = gameObject.transform;
                     break;
                 case 4:
-                    var goat4 = Instantiate(single, new Vector2(transform.position.x, 3.9f), Quaternion.identity);//Up line
-                    var goat5 = Instantiate(single, new Vector2(transform.position.x, 1f), Quaternion.identity);//Middle line
+                    var goat4 = Instantiate(single, new Vector2(transform.position.x, 2.4f), Quaternion.identity);//Up line
+                    var goat5 = Instantiate(single, new Vector2(transform.position.x, -0.5f), Quaternion.identity);//Middle line
                     goat4.transform.parent = gameObject.transform;
                     goat5.transform.parent = gameObject.transform;
                     break;
                 case 5:
-                    var goat6 = Instantiate(single, new Vector2(transform.position.x, 3.9f), Quaternion.identity);//Up line
-                    var goat7 = Instantiate(single, new Vector2(transform.position.x, -2f), Quaternion.identity);//Down line
+                    var goat6 = Instantiate(single, new Vector2(transform.position.x, 2.4f), Quaternion.identity);//Up line
+                    var goat7 = Instantiate(single, new Vector2(transform.position.x, -3.5f), Quaternion.identity);//Down line
                     goat6.transform.parent = gameObject.transform;
                     goat7.transform.parent = gameObject.transform;
                     break;
                 case 6:
-                    var goat8 = Instantiate(single, new Vector2(transform.position.x, 1f), Quaternion.identity);//Middle line
-                    var goat9 = Instantiate(single, new Vector2(transform.position.x, -2f), Quaternion.identity);//Down line
+                    var goat8 = Instantiate(single, new Vector2(transform.position.x, -0.5f), Quaternion.identity);//Middle line
+                    var goat9 = Instantiate(single, new Vector2(transform.position.x, -3.5f), Quaternion.identity);//Down line
                     goat8.transform.parent = gameObject.transform;
                     goat9.transform.parent = gameObject.transform;
                     break;
