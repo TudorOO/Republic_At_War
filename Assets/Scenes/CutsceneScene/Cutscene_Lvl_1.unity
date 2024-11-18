@@ -281,10 +281,11 @@ MonoBehaviour:
   director: {fileID: 1241981154}
   textComponent: {fileID: 1315918628}
   lines:
-  - PLACEHOLDER_1_1
-  - PLACEHOLDER_1_2
-  - PLACEHOLDER_1_3
-  IsImageLeft: 010101
+  - In sfarsit am ajuns.
+  - Hai sa distrug virusul ala cat mai repede sa ma intorc acasa.
+  - '"Confederatia Ritmului"'
+  - Sper doamne sa nu dau de niciun nebun pe aici.
+  IsImageLeft: 01010101
   textSpeed: 0.03
   imageComp: {fileID: 775959683}
   borderRight: {fileID: 621645673}
@@ -2775,8 +2776,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554471100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 41.49, y: -1.04, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 41.49, y: -1.09, z: 0}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -8064,10 +8065,10 @@ MonoBehaviour:
   director: {fileID: 1241981154}
   textComponent: {fileID: 681208608}
   lines:
-  - PLACEHOLDER_2_1
-  - PLACEHOLDER_2_2
-  - PLACEHOLDER_2_3
-  - PLACEHOLDER_2_4
+  - Eeeeuehhhhgggghhh...
+  - Asta ce are ba.
+  - Teeh sparhg in misceari.
+  - Norocul meu...
   IsImageLeft: 00010001
   textSpeed: 0.03
   imageComp: {fileID: 1842865480}
