@@ -5,6 +5,9 @@ using UnityEngine;
 public class BackgroundScroll : MonoBehaviour
 {
 
+    [SerializeField]
+    private float speed = 0.001f;
+
     private float xClimb;
     private float startX;
 
@@ -18,8 +21,8 @@ public class BackgroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x + 0.001f, transform.position.y);
-        xClimb += 0.001f;
+        transform.position = new Vector2(transform.position.x + speed, transform.position.y);
+        xClimb += speed;
         if(xClimb >= 15.5f){
             xClimb = 0;
             transform.position = new Vector2(startX, transform.position.y);

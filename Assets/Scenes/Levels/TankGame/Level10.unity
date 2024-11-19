@@ -609,7 +609,7 @@ Transform:
   m_Children:
   - {fileID: 1966407026}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &540819888
 GameObject:
@@ -713,6 +713,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 --- !u!1 &584057022
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +917,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> c699890508cd599c6e33d469a1cc4904080c8fcb
 --- !u!1 &838253101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,7 +1482,7 @@ Transform:
   m_Children:
   - {fileID: 1061512178}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1256921732
 GameObject:
@@ -1573,6 +1576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationSpeed: 200
+<<<<<<< HEAD
 --- !u!1001 &1267650043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1671,6 +1675,9 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8366a2239633b544b8eb8f321e70975d, type: 3}
 --- !u!1 &1375405769
+=======
+--- !u!1 &1504887263
+>>>>>>> c699890508cd599c6e33d469a1cc4904080c8fcb
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1678,20 +1685,31 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1375405770}
   m_Layer: 0
   m_Name: Barrel
+=======
+  - component: {fileID: 1504887264}
+  m_Layer: 0
+  m_Name: Turret
+>>>>>>> c699890508cd599c6e33d469a1cc4904080c8fcb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &1375405770
+=======
+--- !u!4 &1504887264
+>>>>>>> c699890508cd599c6e33d469a1cc4904080c8fcb
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1375405769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.366, z: 0}
@@ -1796,14 +1814,23 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507613725}
+=======
+  m_GameObject: {fileID: 1504887263}
+>>>>>>> c699890508cd599c6e33d469a1cc4904080c8fcb
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+<<<<<<< HEAD
   m_Children:
   - {fileID: 79393106}
   m_Father: {fileID: 1396993934}
   m_RootOrder: 1
+=======
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+>>>>>>> c699890508cd599c6e33d469a1cc4904080c8fcb
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1507911541
 GameObject:
@@ -1887,7 +1914,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1510012748
 GameObject:
@@ -2575,8 +2602,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 727631266}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &2032303615
 TilemapRenderer:
@@ -47033,7 +47060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3508112031230672900, guid: 85002cb46ac8e4a488917bfba56576ae, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 2
+=======
+      value: 5
+>>>>>>> c699890508cd599c6e33d469a1cc4904080c8fcb
       objectReference: {fileID: 0}
     - target: {fileID: 3508112031230672900, guid: 85002cb46ac8e4a488917bfba56576ae, type: 3}
       propertyPath: m_AnchorMax.x
