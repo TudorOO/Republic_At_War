@@ -8,6 +8,14 @@ public class TankMovement : MonoBehaviour
     [SerializeField]
     private Camera mainCamera;
 
+    private int playerHp = 100;
+    private int enemyHp = 100;
+
+    [SerializeField]
+    private HealthBar playerHealth;
+    [SerializeField]
+    private HealthBar enemyHealth;
+
     public UnityEvent OnShoot = new UnityEvent();
     public UnityEvent<Vector2> OnMoveBody = new UnityEvent<Vector2>();
     public UnityEvent<Vector2> OnMoveTurret = new UnityEvent<Vector2>();
@@ -16,6 +24,7 @@ public class TankMovement : MonoBehaviour
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+        SetupHpBars();
     }
 
     // Update is called once per frame
@@ -24,6 +33,22 @@ public class TankMovement : MonoBehaviour
         GetBodyMovement();
         GetTurretMovement();
         GetShootingInput();
+
+    }
+
+    private void SetupHpBars(){
+        playerHealth.SetMaxHealth(playerHp);
+        enemyHealth.SetMaxHealth(enemyHp);
+    }
+
+    public void PlayerHit(int damage){
+        playerHp -= damage;
+        playerHealth.SetHealth(playerHp);
+    }
+
+    public void EnemyDamage(int damage){
+        enemyHp -= damage;
+        enemyHealth.SetHealth(enemyHp);
     }
 
     private void GetShootingInput()

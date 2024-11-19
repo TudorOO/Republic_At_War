@@ -30,15 +30,22 @@
 
 ---Tank Game 
 	!- Make arena
-	!- Make Enemy AI
+	!!!!!!- Make Enemy AI
 	- Sound Effects
 	- Cutscenes
 	- Animations
+	!- Camera Follow
+	!- 
 
-!!! FIND 1 MORE GAME!!!
+---Shooter Game
+	!-Animations
+	!-Cutscenes
+	- Sound Effects
+	!- Sync up healthBars
 
 
 ---Last Game
+	-Gauntlet
 
 
 Extra stuff:

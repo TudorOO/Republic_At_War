@@ -29,7 +29,7 @@ public class DuelEnemyJumpB : StateMachineBehaviour
         if(Mathf.Abs(player.position.x - rb.position.x) >= 4f){
 
         }else{
-            rand = Random.Range(0, 50);
+            rand = Random.Range(0, 100);
             if(rand == 0){
                 enemyController.attacker = true;
             }

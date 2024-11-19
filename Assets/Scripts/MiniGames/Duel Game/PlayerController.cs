@@ -7,6 +7,27 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource music;
+    [SerializeField]
+    private AudioSource countDownBeep;
+    [SerializeField]
+    private AudioSource footSteps;
+    [SerializeField]
+    private AudioSource jumpSound;
+    [SerializeField]
+    private AudioSource deathSound;
+    [SerializeField]
+    private AudioSource wonSound;
+    [SerializeField]
+    private AudioSource lostSound;
+
+
+
+
+
+
+
 
     private float timeBtwAttacks;
 
@@ -149,12 +170,16 @@ public class PlayerController : MonoBehaviour
         countText.text = "";
         introScreen.SetActive(false);
         countText.text = "3";
+        countDownBeep.Play();
         yield return new WaitForSeconds(1f);
         countText.text = "2";
+        countDownBeep.Play();
         yield return new WaitForSeconds(1f);
         countText.text = "1";
+        countDownBeep.Play();
         yield return new WaitForSeconds(1f);
         countText.text = "GO!";
+        music.Play();
         isRunning = true;
         enemySprite.SetActive(false);
         enemyObj.SetActive(true);
@@ -170,6 +195,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if(isRunning){
+            HandleAudio();
             if(Input.GetKeyDown(KeyCode.P)){
                 GetHit(10, 30, false);
             }
@@ -209,6 +235,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator End(bool won){
         isRunning = false;
+        deathSound.Play();
         if(won==false){
             anim.SetTrigger("Death");
             hasEnded = true;
@@ -268,6 +295,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void HandleAudio(){
+        if(anim.GetBool("isRunning") == true){
+            if(anim.GetBool("isJumping") == false){
+                footSteps.Play();
+            }else{
+                footSteps.Stop();
+            }
+        }else{
+            footSteps.Stop();
+        }
+    }
+
     void HandleAnimation(){
         if(rb.velocity.y != 0){
             anim.SetBool("isJumping", true);
@@ -315,6 +354,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleJump(){
         if(Input.GetButtonDown("Jump") && grounded){
+            jumpSound.Play();
             rb.velocity = new Vector3(rb.velocity.x, jumpSpeed);
             grounded = false;
         }

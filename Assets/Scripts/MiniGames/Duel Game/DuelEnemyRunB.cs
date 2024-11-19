@@ -33,16 +33,16 @@ public class DuelEnemyRunB : StateMachineBehaviour
         Vector2 target = new Vector2(player.position.x, rb.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         if(Mathf.Abs(player.position.x - rb.position.x) >= 4f){
-            rand = Random.Range(0, 500);
+            rand = Random.Range(0, 300);
             if(rand == 0){
                 enemyController.attack1 = true;
             }else{
                 rb.MovePosition(newPos);
             }
         }else{
-            rand = Random.Range(0, 50);
+            rand = Random.Range(0, 100);
             if(rand == 0 && isAttacking == false){
-                rand = Random.Range(100, 105);
+                rand = Random.Range(100, 300);
                 if(rand == 100){
                     enemyController.attack2 = true;
                 }else{
@@ -56,7 +56,7 @@ public class DuelEnemyRunB : StateMachineBehaviour
 
 
         if(player.position.y - rb.position.y > 1f){
-            rand = Random.Range(0, 50);
+            rand = Random.Range(0, 200);
             if(rand == 0){
                 if(player.position.x - rb.position.x < 0){
                     enemyController.Jump(false);
